@@ -1,5 +1,7 @@
 
 # Presenting: bryan's fork for the Dojo Five practical challenge
+>Note: This got a whole lot easier when I was smart enough to include 'rust' in my search for answers. The embedded rust book this comes from was _invaluable_
+
 As you can see, this is a fork of the example project referenced in the [the embedded Rust book][book]. I followed the instructions therein to complete this challenge:
 
 For the sake of completeness I'll summarize the bare-minimum steps needed to compile and run the example code on OSX
