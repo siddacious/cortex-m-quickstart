@@ -1,3 +1,69 @@
+
+# Presenting: bryan's fork for the Dojo Five practical challenge
+As you can see, this is a fork of the example project referenced in the [the embedded Rust book][book]. I followed the instructions therein to complete this challenge:
+
+For the sake of completeness I'll summarize the bare-minimum steps needed to compile and run the example code on OSX
+
+These instructions assume that you have [`git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed
+
+# Steps to Excellence
+Install `rustup` to install the rust toolchain:
+
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+Install support for the `thumb7em` architechture 
+
+```
+rustup target add thumbv7em-none-eabi
+```
+Install `qemu`
+```
+$ brew install qemu
+```
+Clone this repository with a clever name and change to the new directory
+
+```
+git clone git@github.com:siddacious/cortex-m-quickstart.git hello_dojo
+cd hello_dojo
+```
+
+The changes instructed in the tutorial have already been done, and since the compilation target has already been set in `.cargo/config` you can just build the example 🎉
+
+```
+cargo build
+```
+Verify the build by checking that the build target seems like a reasonable type
+
+```
+file target/thumbv7m-none-eabi/debug/examples/hello
+```
+
+`file` should report the file as 
+```
+ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, with debug_info, not stripped
+```
+
+_Finally_ you can run the built program using `qemu`
+
+```
+qemu-system-arm \
+  -cpu cortex-m3 \
+  -machine lm3s6965evb \
+  -nographic \
+  -semihosting-config enable=on,target=native \
+  -kernel target/thumbv7m-none-eabi/debug/examples/hello
+```
+
+If all is well, you should see something similar to this:
+
+![](pr00f.png?raw=true)
+
+If all is not well, I probably wrote bad instructions and you should listen to the professionals below
+## <END BRYAN'S FORK>
+<br>
+<br>
+
 # `cortex-m-quickstart`
 
 > A template for building applications for ARM Cortex-M microcontrollers
